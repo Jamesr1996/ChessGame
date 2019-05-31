@@ -10,10 +10,10 @@ public class Main {
 		Player player1 = new Player(in.nextLine(), "White");
 		
 		System.out.println("Enter Player 2 name: ");
-		Player player2 = new Player("Enter Player 2 name: ", "Black");
+		Player player2 = new Player(in.nextLine(), "Black");
 		
 		// Can add option to change character colours using player.setColour("White/Black");
-		System.out.println("Who wants to start?: ");
+		System.out.println("Who wants to start?: \n");
 		
 		ChessBoard board = new ChessBoard();
 		
