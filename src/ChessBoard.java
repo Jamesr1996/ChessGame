@@ -25,7 +25,6 @@ public class ChessBoard {
 				} else {
 					board[a][b] = new Position("Black");
 				}
-				
 				// Set up piece positions
 				if (a == 0 && (b == 0 || b == 7)){
 					board[a][b].updatePosition(new Piece('R', "Black"));
@@ -77,8 +76,34 @@ public class ChessBoard {
 	}
 	
 	
-	void checkMove(){
+	 
+	/* Rules for movement:
+	 * ==============================================================================
+	 * A piece cannot move on the same space as a piece of its own colour.
+	 * A piece cannot move onto a non-existent position.
+	 * 
+	 * Individual Movement for types:
+	 * Pawns can only move 1 space forward UNLESS an enemy is 1 space diagonally forward
+	 * Rooks can move in any direction except diagonally.
+	 * Bishops can only move diagonally.
+	 * Horses can only move in an L shaped pattern -> 3|1 or 1|3 rules of movement.
+	 * Queens can move in any direction.
+	 * Kings can move 1 space in any direction.
+	 */
+	
+	boolean checkMove(Position start, Position end){
+		char type = start.Piece.type;
 		
+		if (start.Piece.colour == end.Piece.colour){
+			return false;
+		}
+		
+		switch (type){
+			
+		}
+		
+		// Default return value -> Change accordingly.
+		return true;
 	}
 	
 	// Show Board State
@@ -86,7 +111,7 @@ public class ChessBoard {
 		for (int i = 0; i < boardHeight; i++){
 			for (int x = 0; x < boardWidth; x++){
 				// Print Line
-				System.out.print(board[i][x].returnValue()+ " ");
+				System.out.print(board[i][x].returnPieceType()+ " ");
 			}
 			// Move down a line
 			System.out.println();
