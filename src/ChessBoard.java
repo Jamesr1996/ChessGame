@@ -1,3 +1,6 @@
+// Sets up the board by creating individual Pieces at their corresponding co-ordinates 
+// from a 2D array of Positions used to contain them.
+
 public class ChessBoard {
 	
 	// Can change these in constructor for larger games in future projects
@@ -24,50 +27,53 @@ public class ChessBoard {
 				}
 				
 				// Set up piece positions
-				if (a == 0 && (b == 0 || b == 7) || a == 7 && (b == 0 || b == 7)){
-					board[a][b].updatePosition(new Piece('R'));
-				} 
-				if (a == 0 && (b == 1 || b == 6) || a == 7 && (b == 1 || b == 6)) {
-					board[a][b].updatePosition(new Piece('B'));
+				if (a == 0 && (b == 0 || b == 7)){
+					board[a][b].updatePosition(new Piece('R', "Black"));
 				}
-				if (a == 0 && (b == 2 || b == 5) || a == 7 && (b == 2 || b == 5)){
-					board[a][b].updatePosition(new Piece('H'));
+				if (a == 7 && (b == 0 || b == 7)){
+					board[a][b].updatePosition(new Piece('R', "White"));
 				}
-				if ((a == 0 && b == 3) || (a == 7 && b == 3)){
-					board[a][b].updatePosition(new Piece('K'));
+				
+				if (a == 0 && (b == 1 || b == 6)) {
+					board[a][b].updatePosition(new Piece('B', "Black"));
 				}
-				if ((a == 0 && b == 4) || (a == 7 && b == 4)){
-					board[a][b].updatePosition(new Piece('Q'));
+				if (a == 7 && (b == 1 || b == 6)){
+					board[a][b].updatePosition(new Piece('B', "White"));
 				}
-				for (int p = 0; p < 8; p++) {
-					if (a == 1 || a == 6){
-						board[a][p].updatePosition(new Piece('P'));
-					}
+				
+				if (a == 0 && (b == 2 || b == 5)){
+					board[a][b].updatePosition(new Piece('H', "Black"));
 				}
-	
-				// Next Space should be the same colour as the last so we increment count
+				if (a == 7 && (b == 2 || b == 5)){
+					board[a][b].updatePosition(new Piece('H', "White"));
+				}
+				
+				if (a == 0 && b == 3){
+					board[a][b].updatePosition(new Piece('Q', "Black"));
+				}
+				if (a == 7 && b == 3){
+					board[a][b].updatePosition(new Piece('Q', "White"));
+				}
+				
+				if (a == 0 && b == 4){
+					board[a][b].updatePosition(new Piece('K', "Black"));
+				}
+				if (a == 7 && b == 4){
+					board[a][b].updatePosition(new Piece('K', "White"));
+				}
+				
+				if (a == 1){
+					board[a][b].updatePosition(new Piece('P', "Black"));
+				}
+				if (a == 6){
+					board[a][b].updatePosition(new Piece('P', "White"));
+				}				
+				// Move onto the next colour
 				count++;
 			}
+			// Next Space should be the same colour as the last so we increment count
 			count++;
 		}
-		
-		
-		// Set up piece positions.
-//		for (int i = 0; i < boardHeight; i++){
-	//		for (int j = 0; j < boardWidth; j++){
-		//		board[i][j] = new Position('.');
-			//	}
-	//		}		
-	//	board[0][0] = board[0][7] = board[7][0] = board[7][7] = new Position('R');
-	//	board[0][1] = board[0][6] = board[7][1] = board[7][6] = new Position('B');
-	//	board[0][2] = board[0][5] = board[7][2] = board[7][5] = new Position('H');
-	//	board[0][3] = board[7][3] = new Position('K');
-	//	board[0][4] = board[7][4] = new Position('Q');
-		
-		
-		// Implement Colour = Queen Goes on her colour.
-		 
-		 
 	}
 	
 	
@@ -77,7 +83,6 @@ public class ChessBoard {
 	
 	// Show Board State
 	void displayBoard(){
-		
 		for (int i = 0; i < boardHeight; i++){
 			for (int x = 0; x < boardWidth; x++){
 				// Print Line
